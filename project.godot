@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Glide"
+run/main_scene="uid://coo85qp6q5738"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 
 [autoload]
