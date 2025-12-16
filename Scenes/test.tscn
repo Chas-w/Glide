@@ -21,6 +21,28 @@ transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Ground/StaticBody3D"]
 shape = SubResource("BoxShape3D_vbegm")
 
+[node name="Ground2" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(11.76, 0, 0, 0, 0.06, 0, 0, 0, 11.160001, 17, -17, -25)
+mesh = SubResource("BoxMesh_g14j6")
+skeleton = NodePath("StaticBody3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Ground2"]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Ground2/StaticBody3D"]
+shape = SubResource("BoxShape3D_vbegm")
+
+[node name="Ground3" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(11.76, 0, 0, 0, 0.06, 0, 0, 0, 11.160001, 7, -44, 14)
+mesh = SubResource("BoxMesh_g14j6")
+skeleton = NodePath("StaticBody3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Ground3"]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Ground3/StaticBody3D"]
+shape = SubResource("BoxShape3D_vbegm")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, -0.50154096, 0.8651339, 0, -0.8651339, -0.50154096, 0, 5.091435, 0)
 

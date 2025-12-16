@@ -5,7 +5,7 @@ extends CharacterBody3D
 @export_range(0,20) var speed = 5
 @export_range(0,20) var jump_velocity = 4
 @export_range(0,20) var glide_amount = 2
-@export_range(-6,0) var gravity_clamp = -6
+@export_range(-6,0) var gravity_clamp = -3
 #endregion
 
 #region Animation Vars
@@ -15,6 +15,7 @@ var jump_blend_number = 0
 var glide_blend_number = .0
 #endregion
 
+@onready var camera = %Camera3D
 var gliding
 
 func _update_blend_tree():
@@ -35,6 +36,8 @@ func _process(delta):
 	else:
 		if (glide_blend_number > 0):
 			glide_blend_number -= .1
+	
+	
 func _physics_process(delta):
 	#region Gravity Scale
 	# Add the gravity if player isn't gliding.
@@ -60,6 +63,8 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("Left", "Right", "Forward", "Backward")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	direction = direction.rotated(Vector3.UP, camera.global_rotation.y)
+	
 	if direction:
 		if (run_blend_number < 1):
 			run_blend_number += .1
