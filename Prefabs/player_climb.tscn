@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuojrnvxi8xxp"]
+
+[ext_resource type="PackedScene" uid="uid://b3u4m3i231qnn" path="res://Animation/GliderPersonAnimated.glb" id="1_ilrat"]
+[ext_resource type="Script" uid="uid://ddq1f6srrqlr8" path="res://Scripts/character_body_3d.gd" id="1_oghtj"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_inga0"]
+height = 4.0
+radius = 0.6
+
+[node name="PlayerClimb" type="CharacterBody3D"]
+script = ExtResource("1_oghtj")
+speed = null
+jump_velocity = null
+gravity_clamp = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("CylinderShape3D_inga0")
+
+[node name="visuals" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="GliderPersonAnimated" parent="visuals" instance=ExtResource("1_ilrat")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.18117735, 1.036751, 0.68289614)
+
+[node name="camera_mount" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="camera_mount"]
+transform = Transform3D(-1, 0, -8.742278e-08, -1.9307375e-08, 0.97530764, 0.22085063, 8.5264105e-08, 0.22085063, -0.97530764, 0, 4.363439, -4.372344)

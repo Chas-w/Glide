@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://dyj8st65vl7bl"]
+
+[ext_resource type="PackedScene" uid="uid://dbw8ib5ifb4in" path="res://3D Assets/thatgraybox.glb" id="1_lls0r"]
+[ext_resource type="PackedScene" uid="uid://br3y2kacpo8v7" path="res://Prefabs/player_controller.tscn" id="2_7rdf8"]
+
+[sub_resource type="Environment" id="Environment_lls0r"]
+sdfgi_enabled = true
+fog_enabled = true
+volumetric_fog_density = 0.3206
+volumetric_fog_albedo = Color(0.5931336, 0.59313357, 0.59313357, 1)
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_7rdf8"]
+
+[sub_resource type="Compositor" id="Compositor_du4q0"]
+
+[node name="EnviroText" type="Node3D"]
+
+[node name="thatgraybox" parent="." instance=ExtResource("1_lls0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.349371, 0, 5.4717293)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="thatgraybox"]
+transform = Transform3D(-0.41636518, -0.7702331, -0.48309508, 0.078229874, -0.5597215, 0.8249801, -0.9058257, 0.3057005, 0.29330382, 10.349371, 0, 9.032671)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="thatgraybox"]
+environment = SubResource("Environment_lls0r")
+camera_attributes = SubResource("CameraAttributesPractical_7rdf8")
+compositor = SubResource("Compositor_du4q0")
+
+[node name="Player" parent="." instance=ExtResource("2_7rdf8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.258276, 10.312783, 11.367588)
